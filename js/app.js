@@ -28,7 +28,7 @@ function llenartablero(){
 function mostrartablero(){
     i=0;
     ii=0;
-    cont1=0;
+    cont1=1;
     $("div[class^='col']").empty();
     
     while(ii < 7){
