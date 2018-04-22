@@ -6,6 +6,7 @@ var cont1 = 1;
 $(".btn-reinicio").click( function(){
     llenartablero();
     mostrartablero();
+    $(".btn-reinicio").text("Reiniciar");
 });
 
 
