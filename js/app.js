@@ -28,6 +28,8 @@ function mostrartablero(){
     i=0;
     ii=0;
     cont1=0;
+    $("div[class^='col']").empty();
+    
     while(ii < 7){
         i=0;
         while(i < 7){
