@@ -4,6 +4,7 @@ var ii = 0;
 var cont1 = 1;
 var minuto = 2;
 var segundo = 0;
+var timer;
 
 //escuachas
 $(".btn-reinicio").click( function(){
@@ -13,7 +14,8 @@ $(".btn-reinicio").click( function(){
     segundo = 0;
     $(".btn-reinicio").text("Reiniciar");
     $("#timer").text("02:00");
-    var timer = setInterval(mitimer, 1000);
+    
+    timer = setInterval(mitimer, 1000);
 });
 
 colortitulo();
@@ -41,6 +43,10 @@ function mostrartablero(){
     ii=0;
     cont1=1;
     $("div[class^='col']").empty();
+    $(".panel-tablero").show();
+    $(".time").show();
+    $(".panel-score").css("width","25%");
+    $(".titulo-over").remove();
     
     while(ii < 7){
         i=0;
@@ -57,7 +63,9 @@ function mostrartablero(){
 function mitimer(){
     if(segundo == 0){
         if(minuto == 0){
+            findejuego();
             clearInterval(timer);
+            
         }else{
             minuto = minuto - 1;
             segundo = 59;
@@ -80,4 +88,15 @@ function colortitulo(){
 function revertircolor(){
     $(".main-titulo").animate({color: '#DCFF0E' },1000,colortitulo);  
 }
+
+//fin de juego
+function findejuego(){
+    $(".panel-tablero").hide("slow");
+    $(".time").hide("slow");
+    $(".panel-score").css("width","100%");
+    $(".panel-score").prepend("<h2 class='titulo-over'>Fin De Juego </h2>");
+
+    return;
+}
+
 
