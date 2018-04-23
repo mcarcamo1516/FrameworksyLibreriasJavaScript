@@ -14,7 +14,7 @@ $(".btn-reinicio").click( function(){
     segundo = 0;
     $(".btn-reinicio").text("Reiniciar");
     $("#timer").text("02:00");
-    
+    clearInterval(timer);
     timer = setInterval(mitimer, 1000);
 });
 
