@@ -1,13 +1,25 @@
 var tablero = new Array();
+var tableroeliminados = new Array();
 var i = 0;
 var ii = 0;
 var cont1 = 1;
 var minuto = 2;
 var segundo = 0;
 var timer;
+var tablerorevisado = false;
+var contv1 = 0;
+var contv2 = 0;
+var contv3 = 0;
+var contv4 = 0;
+var contaux = 0;
+var total = 0;
+var parcial = 0;
+var encontrado = false;
+var aux;
 
 //escuachas
 $(".btn-reinicio").click( function(){
+    total=0;
     llenartablero();
     mostrartablero();
     minuto = 2;
@@ -16,6 +28,8 @@ $(".btn-reinicio").click( function(){
     $("#timer").text("02:00");
     clearInterval(timer);
     timer = setInterval(mitimer, 1000);
+    verificartablero();
+    eliminardulces();
 });
 
 colortitulo();
@@ -26,12 +40,15 @@ colortitulo();
 //funcio para llenar tablero
 function llenartablero(){
     tablero = [];
+    tableroeliminados =[];
     i=0;
     while(i < 7){
         tablero[i]=new Array();
+        tableroeliminados[i]= new Array();
         ii=0;
         while(ii < 7){
             tablero[i][ii] = Math.floor(Math.random() * 4) + 1;
+            tableroeliminados[i][ii] = false;
             ii ++;
         }
         i++;
@@ -97,6 +114,43 @@ function findejuego(){
     $(".panel-score").prepend("<h2 class='titulo-over'>Fin De Juego </h2>");
 
     return;
+}
+
+function verificartablero(){
+    contv1 = 0;
+    contv2 = 0;
+    contv3 = 0;
+    contv4 = 1;
+    encontrado = false;
+    while(contv1 < 7){
+        while(contv2 < 7){
+            if(tablero[contv1][contv2] == tablero[contv3][contv4]){
+                contaux = contaux + 1;
+                tableroeliminados[contv1][contv2] = true;
+                tableroeliminados[contv3][contv4] = true;
+                encontrado = true;
+
+            }
+            else if(contaux >= 2){
+
+                parcial = contaux - 1;
+                parcial = parcial * 10;
+                total = total + parcial;
+                contaux = 0;
+
+            }
+            else if(encontrado){
+
+                aux = contv2 - 1;
+                tableroeliminados[cont1][contv2] = false;
+                tableroeliminados[contv3][aux] = false;
+            }
+                contv2 = contv2 + 1;
+                contv4 = contv4 + 1;
+        }
+        contv1 = contv1 + 1;
+        contv3 = contv3 + 1;
+    }
 }
 
 
