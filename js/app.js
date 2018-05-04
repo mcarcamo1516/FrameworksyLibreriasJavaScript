@@ -123,7 +123,7 @@ function verificartablero(){
     contv4 = 1;
     encontrado = false;
     while(contv1 < 7){
-        while(contv2 < 7){
+        while(contv2 < 6){
             if(tablero[contv1][contv2] == tablero[contv3][contv4]){
                 contaux = contaux + 1;
                 tableroeliminados[contv1][contv2] = true;
@@ -137,6 +137,7 @@ function verificartablero(){
                 parcial = parcial * 10;
                 total = total + parcial;
                 contaux = 0;
+                encontrado= false;
 
             }
             else if(encontrado){
@@ -144,6 +145,7 @@ function verificartablero(){
                 aux = contv2 - 1;
                 tableroeliminados[cont1][contv2] = false;
                 tableroeliminados[contv3][aux] = false;
+                encontrado= false;
             }
                 contv2 = contv2 + 1;
                 contv4 = contv4 + 1;
