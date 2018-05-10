@@ -45,6 +45,7 @@ function llenartablero(){
     while(i < 7){
         tablero[i]=new Array();
         tableroeliminados[i]= new Array();
+        
         ii=0;
         while(ii < 7){
             tablero[i][ii] = Math.floor(Math.random() * 4) + 1;
@@ -118,91 +119,64 @@ function findejuego(){
 
 function verificartablero(){
     contv1 = 0;
-    contv2 = 0;
-    contv3 = 0;
-    contv4 = 1;
-    contaux
+    contaux = 0;
     encontrado = false;
     //verificacion vertical
     while(contv1 < 7){
         contv2 = 0;
-        contv4 = 1;
-        encontrado = false;
+        contv3 = 1;
+        contv4 = 2;
         contaux=0;
-        while(contv2 < 6){
-            if(tablero[contv1][contv2] == tablero[contv3][contv4]){
+        while(contv2 < 5)
+        {
+            if(tablero[contv1][contv2] == tablero[contv1][contv3] && tablero[contv1][contv3] == tablero[contv1][contv4])
+            {
                 contaux = contaux + 1;
                 tableroeliminados[contv1][contv2] = true;
-                tableroeliminados[contv3][contv4] = true;
+                tableroeliminados[contv1][contv3] = true;
+                tableroeliminados[contv1][contv4] = true;
                 encontrado = true;
 
             }
-            else{
-                if(contaux > 1){
 
-                    parcial = contaux - 1;
-                    parcial = parcial * 10;
-                    total = total + parcial;
-                    contaux = 0;
-                    encontrado = false;
-
-                }else{
-                    if(encontrado == true){
-
-                    aux = contv2 - 1;
-                    tableroeliminados[cont1][contv2] = false;
-                    tableroeliminados[contv3][aux] = false;
-                    encontrado= false;
-                   } 
-                }
-
-            }
             
                 contv2 = contv2 + 1;
+                contv3 = contv3 + 1;
                 contv4 = contv4 + 1;
         }
         contv1 = contv1 + 1;
-        contv3 = contv3 + 1;
+        
     }
     //verifivacion horizontal
     contv1 = 0;
-    contv2 = 0;
-    contv3 = 1;
-    contv4 = 0;
-    encontrado = false;
-   /* while(contv2 < 7){
-          while(contv1 < 6){
-                if(tablero[contv1][contv2] == tablero[contv3][contv4]){
+    
+    
+    while(contv1 < 7){
+        contv2 = 0;
+        contv3 = 1;
+        contv4 = 2;
+        contaux=0;
+        while(contv2 < 5)
+        {
+            if(tablero[contv2][contv1] == tablero[contv3][contv1] && tablero[contv3][contv1] == tablero[contv4][contv1])
+            {
                 contaux = contaux + 1;
-                tableroeliminados[contv1][contv2] = true;
-                tableroeliminados[contv3][contv4] = true;
+                tableroeliminados[contv2][contv1] = true;
+                tableroeliminados[contv3][contv1] = true;
+                tableroeliminados[contv4][contv1] = true;
                 encontrado = true;
 
             }
-            else if(contaux >= 2){
 
-                parcial = contaux - 1;
-                parcial = parcial * 10;
-                total = total + parcial;
-                contaux = 0;
-                encontrado= false;
-
-            }
-            else if(encontrado){
-
-                aux = contv1 - 1;
-                tableroeliminados[cont1][contv2] = false;
-                tableroeliminados[aux][contv4] = false;
-                encontrado= false;
-            }
-                contv1 = contv1 + 1;
+            
+                contv2 = contv2 + 1;
                 contv3 = contv3 + 1;
+                contv4 = contv4 + 1;
+        }
+        contv1 = contv1 + 1;
         
-            }
-        contv2 = contv2 + 1;
-        contv4 = contv4 + 1;
-    }*/
+    }
     //fin de recorido de matriz
-}
+}//fin verificacion de tablero
 
 
