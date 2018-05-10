@@ -116,7 +116,7 @@ function findejuego(){
 
     return;
 }
-
+//verificacion de tablero
 function verificartablero(){
     contv1 = 0;
     contaux = 0;
@@ -177,6 +177,24 @@ function verificartablero(){
         
     }
     //fin de recorido de matriz
-}//fin verificacion de tablero
+}
+//fin verificacion de tablero
 
+// eliminacion de dulces
+function eliminardulces(){
+    i=0;
+    ii=0;
+    while(ii < 7){
+          i=0;
+            while(i < 7){
+                if(tableroeliminados[ii][i]){
+                    $(".casilla-"+ii+"-"+i).empty()effect( "bounce", "1000" );
+                    }
+                  i++;  
+                    
+                }
+                ii++;
+    }
+    
+}
 
