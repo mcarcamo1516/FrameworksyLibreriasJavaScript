@@ -136,7 +136,19 @@ function verificartablero(){
                 tableroeliminados[contv1][contv3] = true;
                 tableroeliminados[contv1][contv4] = true;
                 encontrado = true;
+                if(contv2 == 4){
+                    parcial = contaux * 10;
+                    total= parcial +total;
+                    contaux= 0;
+                    $("#score-text").text(total);
+                }
 
+            }else if(contaux > 0){
+                parcial = contaux * 10;
+                total= parcial +total;
+                contaux= 0;
+                $("#score-text").text(total);
+                
             }
 
             
@@ -165,7 +177,19 @@ function verificartablero(){
                 tableroeliminados[contv3][contv1] = true;
                 tableroeliminados[contv4][contv1] = true;
                 encontrado = true;
+                if(contv2 == 4){
+                    parcial = contaux * 10;
+                    total= parcial +total;
+                    contaux= 0;
+                    $("#score-text").text(total);
+                }
 
+            }else if(contaux > 0){
+                parcial = contaux * 10;
+                total= parcial +total;
+                contaux= 0;
+                $("#score-text").text(total);
+                
             }
 
             
@@ -188,7 +212,7 @@ function eliminardulces(){
           i=0;
             while(i < 7){
                 if(tableroeliminados[ii][i]){
-                    $(".casilla-"+ii+"-"+i).empty()effect( "bounce", "1000" );
+                    $(".casilla-"+ii+"-"+i).empty();
                     }
                   i++;  
                     

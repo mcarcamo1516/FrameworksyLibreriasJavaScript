@@ -104,3 +104,7 @@ div[class^='col']{
   height: 96px;
 
 }
+div[class^='casilla']{
+    height: 14.28%;
+    border: none;
+}
