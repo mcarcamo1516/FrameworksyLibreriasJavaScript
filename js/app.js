@@ -212,7 +212,7 @@ function eliminardulces(){
           i=0;
             while(i < 7){
                 if(tableroeliminados[ii][i]){
-                    $(".casilla-"+ii+"-"+i).empty();
+                    $(".casilla-"+ii+"-"+i).hide("pulsate",1000);
                     }
                   i++;  
                     
