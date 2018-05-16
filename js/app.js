@@ -212,6 +212,8 @@ function eliminardulces(){
           i=0;
             while(i < 7){
                 if(tableroeliminados[ii][i]){
+                    tablero[ii][i] = 0;
+                    tableroeliminados[ii][i] = false;
                     $(".casilla-"+ii+"-"+i).hide("pulsate",1000);
                     }
                   i++;  
