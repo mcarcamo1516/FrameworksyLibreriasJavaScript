@@ -30,6 +30,7 @@ $(".btn-reinicio").click( function(){
     timer = setInterval(mitimer, 1000);
     verificartablero();
     eliminardulces();
+    reordenar();
 });
 
 colortitulo();
@@ -223,4 +224,31 @@ function eliminardulces(){
     }
     
 }
+// reoganizar tablero
+function reordenar(){
+    contv1 = 0;
+    contv2 = 0;
+    contv3 = 1;
+    
+    
+    while(cont1 < 7){
+        
+        while(contv2 < 6){
+                if(tablero[contv2][cont1] == 0 && tablero[contv3][cont1] != 0){
+                        tablero[contv2][cont1] = tablero[contv3][cont1];
+                        tablero[contv3][cont1] = 0;
+                        contv2 = 0;
+                        contv3 = 1;
+                   }else{
+                       contv2++;
+                       contv3++;
+                   }
+              
+              }
+        contv1++;
+        
+    }
+    
+}
+
 
