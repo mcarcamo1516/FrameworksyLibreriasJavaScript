@@ -234,7 +234,7 @@ function reordenar(){
     while(cont1 < 7){
         
         while(contv2 < 6){
-                if(tablero[contv3][cont1] == 0 && tablero[contv2][cont1] != 0){
+                if(tablero[contv3][cont1] == 0){
                         tablero[contv3][cont1] = tablero[contv2][cont1];
                         tablero[contv2][cont1] = 0;
                         contv2 = 0;
