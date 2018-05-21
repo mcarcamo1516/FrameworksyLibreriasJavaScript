@@ -231,18 +231,26 @@ function reordenar(){
     contv3 = 1;
     
     
-    while(cont1 < 7){
+    
+    while(contv1 < 7){
         
+        contv2 = 0;
+        contv3 = 1;
         while(contv2 < 6){
-                if(tablero[contv3][cont1] == 0 && tablero[contv2][cont1] != 0){
-                        tablero[contv3][cont1] = tablero[contv2][cont1];
-                        tablero[contv2][cont1] = 0;
-                        contv2 = 0;
-                        contv3 = 1;
+            
+                if(tablero[contv2][contv1] == 0 && tablero[contv3][contv1] != 0){
+                        
+                        tablero[contv2][contv1] = tablero[contv3][contv1];
+                        tablero[contv3][contv1] = 0;
+                    contv2 = 0;
+                    contv3 = 1;
+                        
                    }else{
                        contv2++;
                        contv3++;
                    }
+                       
+                   
               
               }
         contv1++;
