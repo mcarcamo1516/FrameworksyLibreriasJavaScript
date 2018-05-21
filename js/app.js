@@ -21,16 +21,22 @@ var aux;
 $(".btn-reinicio").click( function(){
     total=0;
     llenartablero();
-    mostrartablero();
+    mostrartablero()
     minuto = 2;
     segundo = 0;
     $(".btn-reinicio").text("Reiniciar");
     $("#timer").text("02:00");
     clearInterval(timer);
     timer = setInterval(mitimer, 1000);
+    do{
+        
+    
     verificartablero();
     eliminardulces();
     reordenar();
+    rellenado();
+    setTimeout(mostrartablero,1000);
+    }while(encontrado);
 });
 
 colortitulo();
@@ -229,8 +235,7 @@ function reordenar(){
     contv1 = 0;
     contv2 = 0;
     contv3 = 1;
-    
-    
+    contv3 = 1;
     
     while(contv1 < 7){
         
@@ -260,6 +265,22 @@ function reordenar(){
         
     }
     
+}
+//fin de reorganizar
+function rellenado(){
+    i=0;
+    
+    while(i < 7){
+        ii=0;
+        while(ii < 7){
+            if(tablero[i][ii] == 0){
+                tablero[i][ii] = Math.floor(Math.random() * 4) + 1;
+                
+            }
+            ii++;
+        }
+        i++;
+    }
 }
 
 
