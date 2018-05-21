@@ -237,6 +237,7 @@ function reordenar(){
         contv2 = 0;
         contv3 = 1;
         while(contv2 < 6){
+<<<<<<< HEAD
             
                 if(tablero[contv2][contv1] == 0 && tablero[contv3][contv1] != 0){
                         
@@ -245,6 +246,13 @@ function reordenar(){
                     contv2 = 0;
                     contv3 = 1;
                         
+=======
+                if(tablero[contv3][cont1] == 0){
+                        tablero[contv3][cont1] = tablero[contv2][cont1];
+                        tablero[contv2][cont1] = 0;
+                        contv2 = 0;
+                        contv3 = 1;
+>>>>>>> c336db973d9e11aa28738c0aa5987a29d8513a26
                    }else{
                        contv2++;
                        contv3++;
