@@ -40,8 +40,9 @@ $(".btn-reinicio").click( function(){
 });
 
 colortitulo();
-
-
+$( function() {
+$(".elemento").draggable();
+});
 
 //funciones
 //funcio para llenar tablero
