@@ -40,9 +40,10 @@ $(".btn-reinicio").click( function(){
 });
 
 colortitulo();
-$( function() {
-$(".elemento").draggable();
-});
+
+
+$("#casilla-6-0").draggable();
+
 
 //funciones
 //funcio para llenar tablero
@@ -77,7 +78,7 @@ function mostrartablero(){
     while(ii < 7){
         i=0;
         while(i < 7){
-            $(".col-"+cont1).prepend("<div class='casilla-"+i+"-"+ii+"'><img src='image/"+tablero[i][ii]+".png' class='elemento'></div>");
+            $(".col-"+cont1).prepend("<div class='casilla-"+i+"-"+ii+"'><img src='image/"+tablero[i][ii]+".png' class='elemento' id='casilla-"+i+"-"+ii+"'></div>");
             i++;
         }
         ii++;
