@@ -27,3 +27,23 @@ function revertircolor(){
 function revisartablero() {
 	llenartablero();
 }
+
+function llenartablero() {
+	var top = 6;
+	var column = $('[class^="col-"]');
+
+	column.each(function () {
+		var dulce = $(this).children().length;
+		var agrega = top - dulce;
+		for (var i = 0; i < agrega; i++) {
+			var tipodulce = Math.floor(Math.random() * 4) + 1;
+			if (i === 0 && dulce < 1) {
+				$(this).append('<img src="image/' + tipodulce + '.png" class="element"></img>');
+			} else {
+				$(this).find('img:eq(0)').before('<img src="image/' + tipodulce + '.png" class="element"></img>');
+			}
+		}
+	});
+	agregardulceevento();
+	validacion();
+}
