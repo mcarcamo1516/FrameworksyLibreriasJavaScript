@@ -9,7 +9,7 @@ function iniciojuego() {
 		if ($(this).text() === 'Reiniciar') {
 			location.reload(true);
 		}
-		checkBoard();
+		revisartablero();
 		$(this).text('Reiniciar');
 		$('#timer').startTimer({
 			onComplete: endGame
@@ -22,4 +22,8 @@ function colortitulo(){
 }
 function revertircolor(){
     $(".main-titulo").animate({color: '#DCFF0E' },1000,colortitulo);  
+}
+
+function revisartablero() {
+	llenartablero();
 }
