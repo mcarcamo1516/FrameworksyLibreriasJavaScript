@@ -106,3 +106,69 @@ function validacionfilas() {
 		}
 	}
 }
+
+function validacioncolumnas() {
+	for (var j = 0; j < 6; j++) {
+		var contador = 0;
+		var candyPosition = [];
+		var extraCandyPosition = [];
+		var candyRow = candyRows(j);
+		var comparisonValue = candyRow[0];
+		var gap = false;
+		for (var i = 1; i < candyRow.length; i++) {
+			var srcComparison = comparisonValue.attr('src');
+			var srcCandy = candyRow[i].attr('src');
+
+			if (srcComparison != srcCandy) {
+				if (candyPosition.length >= 3) {
+					gap = true;
+				} else {
+					candyPosition = [];
+				}
+				contador = 0;
+			} else {
+				if (contador == 0) {
+					if (!gap) {
+						candyPosition.push(i - 1);
+					} else {
+						extraCandyPosition.push(i - 1);
+					}
+				}
+				if (!gap) {
+					candyPosition.push(i);
+				} else {
+					extraCandyPosition.push(i);
+				}
+				contador += 1;
+			}
+			comparisonValue = candyRow[i];
+		}
+		if (extraCandyPosition.length > 2) {
+			candyPosition = $.merge(candyPosition, extraCandyPosition);
+		}
+		if (candyPosition.length <= 2) {
+			candyPosition = [];
+		}
+		candyCount = candyPosition.length;
+		if (candyCount >= 3) {
+			deleteHorizontal(candyPosition, candyRow);
+			setScore(candyCount);
+		}
+	}
+}
+
+function agregardulceevento() {
+	$('img').draggable({
+		containment: '.panel-tablero',
+		droppable: 'img',
+		revert: true,
+		revertDuration: 500,
+		grid: [100, 100],
+		zIndex: 10,
+		drag: constrainCandyMovement
+	});
+	$('img').droppable({
+		drop: swapCandy
+	});
+	enableCandyEvents();
+}
