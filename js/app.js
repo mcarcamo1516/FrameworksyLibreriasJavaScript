@@ -168,7 +168,7 @@ function agregardulceevento() {
 		drag: constrainCandyMovement
 	});
 	$('img').droppable({
-		drop: swapCandy
+		drop: intercambiar
 	});
 	habilitardulce();
 }
@@ -191,4 +191,30 @@ function constrainCandyMovement(event, candyDrag) {
 	candyDrag.position.bottom = Math.min(100, candyDrag.position.bottom);
 	candyDrag.position.left = Math.min(100, candyDrag.position.left);
 	candyDrag.position.right = Math.min(100, candyDrag.position.right);
+}
+
+function intercambiar(event, candyDrag) {
+	var candyDrag = $(candyDrag.draggable);
+	var dragSrc = candyDrag.attr('src');
+	var candyDrop = $(this);
+	var dropSrc = candyDrop.attr('src');
+	candyDrag.attr('src', dropSrc);
+	candyDrop.attr('src', dragSrc);
+
+	setTimeout(function () {
+		revisartablero();
+		if ($('img.delete').length === 0) {
+			candyDrag.attr('src', dragSrc);
+			candyDrop.attr('src', dropSrc);
+		} else {
+			actualizar();
+		}
+	}, 500);
+
+}
+
+function actualizar() {
+	var actualValue = Number($('#movimientos-text').text());
+	var result = actualValue += 1;
+	$('#movimientos-text').text(result);
 }
