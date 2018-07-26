@@ -102,7 +102,7 @@ function validacionfilas() {
 		candyCount = candyPosition.length;
 		if (candyCount >= 3) {
 			deleteHorizontal(candyPosition, candyRow);
-			setScore(candyCount);
+			resultado(candyCount);
 		}
 	}
 }
@@ -152,7 +152,7 @@ function validacioncolumnas() {
 		candyCount = candyPosition.length;
 		if (candyCount >= 3) {
 			deleteHorizontal(candyPosition, candyRow);
-			setScore(candyCount);
+			resultado(candyCount);
 		}
 	}
 }
@@ -262,4 +262,25 @@ function eliminardulce() {
 			reject('No se pudo eliminar Dulce...');
 		}
 	});
+}
+
+function resultado(candyCount) {
+	var score = Number($('#score-text').text());
+	switch (candyCount) {
+		case 3:
+			score += 25;
+			break;
+		case 4:
+			score += 50;
+			break;
+		case 5:
+			score += 75;
+			break;
+		case 6:
+			score += 100;
+			break;
+		case 7:
+			score += 200;
+	}
+	$('#score-text').text(score);
 }
