@@ -232,7 +232,7 @@ function eliminaranimacion() {
 		}, {
 			duration: 400,
 			complete: function () {
-				deletesCandy()
+				eliminardulce()
 					.then(checkBoardPromise)
 					.catch(showPromiseError);
 			},
@@ -249,4 +249,17 @@ function checkBoardPromise(result) {
 	if (result) {
 		revisartablero();
 	}
+}
+
+function showPromiseError(error) {
+	console.log(error);
+}
+function eliminardulce() {
+	return new Promise(function (resolve, reject) {
+		if ($('img.delete').remove()) {
+			resolve(true);
+		} else {
+			reject('No se pudo eliminar Dulce...');
+		}
+	});
 }
