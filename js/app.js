@@ -152,7 +152,7 @@ for (var j = 0; j < 7; j++) {
 		candyCount = candyPosition.length;
 		if (candyCount >= 3) {
 			deleteColumnCandy(candyPosition, candyColumn);
-			setScore(candyCount);
+			resultado(candyCount);
 		}
 	}
 }
