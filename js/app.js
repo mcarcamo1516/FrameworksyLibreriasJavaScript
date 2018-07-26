@@ -218,3 +218,35 @@ function actualizar() {
 	var result = actualValue += 1;
 	$('#movimientos-text').text(result);
 }
+
+function eliminaranimacion() {
+	desshabilitardulce();
+	$('img.delete').effect('pulsate', 400);
+	$('img.delete').animate({
+			opacity: '0'
+		}, {
+			duration: 300
+		})
+		.animate({
+			opacity: '0'
+		}, {
+			duration: 400,
+			complete: function () {
+				deletesCandy()
+					.then(checkBoardPromise)
+					.catch(showPromiseError);
+			},
+			queue: true
+		});
+}
+
+function desshabilitardulce() {
+	$('img').draggable('disable');
+	$('img').droppable('disable');
+}
+
+function checkBoardPromise(result) {
+	if (result) {
+		revisartablero();
+	}
+}
