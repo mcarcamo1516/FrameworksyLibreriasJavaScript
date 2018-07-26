@@ -284,3 +284,15 @@ function resultado(candyCount) {
 	}
 	$('#score-text').text(score);
 }
+
+function deleteHorizontal(candyPosition, candyRow) {
+	for (var i = 0; i < candyPosition.length; i++) {
+		candyRow[candyPosition[i]].addClass('delete');
+	}
+}
+
+function deleteColumnCandy(candyPosition, candyColumn) {
+	for (var i = 0; i < candyPosition.length; i++) {
+		candyColumn.eq(candyPosition[i]).addClass('delete');
+	}
+}
