@@ -1,3 +1,7 @@
+var minuto = 2;
+var segundo = 0;
+var timer
+
 $(function () {
 	iniciojuego();
 });
@@ -6,14 +10,17 @@ function iniciojuego() {
 
 	colortitulo();
 	$('.btn-reinicio').click(function () {
+        minuto = 2;
+        segundo = 0;
 		if ($(this).text() === 'Reiniciar') {
 			location.reload(true);
 		}
 		revisartablero();
 		$(this).text('Reiniciar');
-		$('#timer').startTimer({
-			onComplete: finJuego
-		});
+        $("#timer").text("02:00");
+        timer = setInterval(mitimer, 1000);
+
+    
 	});
 }
 
@@ -334,4 +341,26 @@ function giveCandyArrays(arrayType, index) {
 	} else if (arrayType === 'rows' && index !== '') {
 		return candyRow;
 	}
+}
+
+function mitimer(){
+    if(segundo == 0){
+        if(minuto == 0){
+            finJuego();
+            clearInterval(timer);
+            
+        }else{
+            minuto = minuto - 1;
+            segundo = 59;
+        }
+    }else{
+        segundo= segundo - 1;
+    }
+    if(segundo < 10){
+        $("#timer").text("0"+minuto+":0"+segundo);
+    }else{
+        $("#timer").text("0"+minuto+":"+segundo);
+    }
+    
+    
 }
