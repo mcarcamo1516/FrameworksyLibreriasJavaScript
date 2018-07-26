@@ -12,7 +12,7 @@ function iniciojuego() {
 		revisartablero();
 		$(this).text('Reiniciar');
 		$('#timer').startTimer({
-			onComplete: endGame
+			onComplete: finJuego
 		});
 	});
 }
@@ -170,5 +170,25 @@ function agregardulceevento() {
 	$('img').droppable({
 		drop: swapCandy
 	});
-	enableCandyEvents();
+	habilitardulce();
+}
+
+function finJuego() {
+	$('div.panel-tablero, div.time').effect('fold');
+	$('h1.main-titulo').addClass('title-over')
+		.text('Gracias por jugar!');
+	$('div.score, div.moves, div.panel-score').width('100%');
+}
+
+
+function habilitardulce() {
+	$('img').draggable('enable');
+	$('img').droppable('enable');
+}
+
+function constrainCandyMovement(event, candyDrag) {
+	candyDrag.position.top = Math.min(100, candyDrag.position.top);
+	candyDrag.position.bottom = Math.min(100, candyDrag.position.bottom);
+	candyDrag.position.left = Math.min(100, candyDrag.position.left);
+	candyDrag.position.right = Math.min(100, candyDrag.position.right);
 }
