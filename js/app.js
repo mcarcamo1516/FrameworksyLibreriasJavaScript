@@ -108,16 +108,16 @@ function validacionfilas() {
 }
 
 function validacioncolumnas() {
-	for (var j = 0; j < 6; j++) {
-		var contador = 0;
+for (var j = 0; j < 7; j++) {
+		var counter = 0;
 		var candyPosition = [];
 		var extraCandyPosition = [];
-		var candyRow = candyRows(j);
-		var comparisonValue = candyRow[0];
+		var candyColumn = candyColumns(j);
+		var comparisonValue = candyColumn.eq(0);
 		var gap = false;
-		for (var i = 1; i < candyRow.length; i++) {
+		for (var i = 1; i < candyColumn.length; i++) {
 			var srcComparison = comparisonValue.attr('src');
-			var srcCandy = candyRow[i].attr('src');
+			var srcCandy = candyColumn.eq(i).attr('src');
 
 			if (srcComparison != srcCandy) {
 				if (candyPosition.length >= 3) {
@@ -125,9 +125,9 @@ function validacioncolumnas() {
 				} else {
 					candyPosition = [];
 				}
-				contador = 0;
+				counter = 0;
 			} else {
-				if (contador == 0) {
+				if (counter == 0) {
 					if (!gap) {
 						candyPosition.push(i - 1);
 					} else {
@@ -139,9 +139,9 @@ function validacioncolumnas() {
 				} else {
 					extraCandyPosition.push(i);
 				}
-				contador += 1;
+				counter += 1;
 			}
-			comparisonValue = candyRow[i];
+			comparisonValue = candyColumn.eq(i);
 		}
 		if (extraCandyPosition.length > 2) {
 			candyPosition = $.merge(candyPosition, extraCandyPosition);
@@ -151,8 +151,8 @@ function validacioncolumnas() {
 		}
 		candyCount = candyPosition.length;
 		if (candyCount >= 3) {
-			deleteHorizontal(candyPosition, candyRow);
-			resultado(candyCount);
+			deleteColumnCandy(candyPosition, candyColumn);
+			setScore(candyCount);
 		}
 	}
 }
@@ -294,5 +294,44 @@ function deleteHorizontal(candyPosition, candyRow) {
 function deleteColumnCandy(candyPosition, candyColumn) {
 	for (var i = 0; i < candyPosition.length; i++) {
 		candyColumn.eq(candyPosition[i]).addClass('delete');
+	}
+}
+
+function candyColumns(index) {
+	var candyColumn = giveCandyArrays('columns');
+	return candyColumn[index];
+}
+function candyRows(index) {
+	var candyRow = giveCandyArrays('rows', index);
+	return candyRow;
+}
+
+function giveCandyArrays(arrayType, index) {
+
+	var candyCol1 = $('.col-1').children();
+	var candyCol2 = $('.col-2').children();
+	var candyCol3 = $('.col-3').children();
+	var candyCol4 = $('.col-4').children();
+	var candyCol5 = $('.col-5').children();
+	var candyCol6 = $('.col-6').children();
+	var candyCol7 = $('.col-7').children();
+
+	var candyColumns = $([candyCol1, candyCol2, candyCol3, candyCol4,
+		candyCol5, candyCol6, candyCol7
+	]);
+
+	if (typeof index === 'number') {
+		var candyRow = $([candyCol1.eq(index), candyCol2.eq(index), candyCol3.eq(index),
+			candyCol4.eq(index), candyCol5.eq(index), candyCol6.eq(index),
+			candyCol7.eq(index)
+		]);
+	} else {
+		index = '';
+	}
+
+	if (arrayType === 'columns') {
+		return candyColumns;
+	} else if (arrayType === 'rows' && index !== '') {
+		return candyRow;
 	}
 }
